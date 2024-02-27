@@ -7,7 +7,7 @@
  *
  * Return: Height or 0 if tree is NULL
  */
-size_t tree_height(const heap_t *tree)
+size_t ftree_height(const heap_t *tree)
 {
 	size_t height_l = 0;
 	size_t height_r = 0;
@@ -16,10 +16,10 @@ size_t tree_height(const heap_t *tree)
 		return (0);
 
 	if (tree->left)
-		height_l = 1 + tree_height(tree->left);
+		height_l = 1 + ftree_height(tree->left);
 
 	if (tree->right)
-		height_r = 1 + tree_height(tree->right);
+		height_r = 1 + ftree_height(tree->right);
 
 	if (height_l > height_r)
 		return (height_l);
@@ -31,7 +31,7 @@ size_t tree_height(const heap_t *tree)
  *
  * Return: Height or 0 if tree is NULL
  */
-size_t tree_size_h(const binary_tree_t *tree)
+size_t ftree_size_h(const binary_tree_t *tree)
 {
 	size_t height_l = 0;
 	size_t height_r = 0;
@@ -40,10 +40,10 @@ size_t tree_size_h(const binary_tree_t *tree)
 		return (0);
 
 	if (tree->left)
-		height_l = 1 + tree_size_h(tree->left);
+		height_l = 1 + ftree_size_h(tree->left);
 
 	if (tree->right)
-		height_r = 1 + tree_size_h(tree->right);
+		height_r = 1 + ftree_size_h(tree->right);
 
 	return (height_l + height_r);
 }
@@ -126,7 +126,7 @@ int heap_extract(heap_t **root)
 		return (value);
 	}
 
-	_preorder(heap_r, &node, tree_height(heap_r));
+	_preorder(heap_r, &node, ftree_height(heap_r));
 
 	heap_r->n = node->n;
 	if (node->parent->right)
